@@ -35,7 +35,7 @@ void lets_pause (){
 void calibration(){
     
     // inputs:----------------------------------
-    string label = "runs_2021_2028";//"runs_1006_1013";
+    string label = "runs_1006_1013"; //"runs_2112_2119";// "runs_2152_2159";//"runs_2144_2151"; //"runs_1997_2004";//"runs_2042_2049";//"runs_2029_2036";//"runs_1006_1013";
     const int nhvs = 8;
     
     // 950-956: 7 HVs
@@ -50,6 +50,23 @@ void calibration(){
     //runs_1443_1450_top
     // runs_1637_1644
     //"runs_1367_1373";
+    //runs_2021_2028
+    
+    //create folders:
+    /*
+    TString fname = "./runs_1819";
+    if (gSystem->AccessPathName( fname )) {
+        gSystem->Exec(Form("mkdir %s",label.c_str()));
+        gSystem->Exec(Form("mkdir %s/RESULTS",label.c_str()));
+        gSystem->Exec(Form("mkdir %s/SPE",label.c_str()));
+        gSystem->Exec(Form("mkdir %s/WF",label.c_str()));
+        gSystem->Exec(Form("mkdir %s/FIT",label.c_str()));
+        gSystem->Exec(Form("mkdir %s/more_plots",label.c_str()));
+        gSystem->Exec(Form("cp output_001819_0000.root %s/",label.c_str()));
+        //gSystem->Exec("cp ./output_001819_0000.root runs_1819/output_001819_0000.root");
+    }
+    else cout <<" Folder already exists!"<<endl;
+     */
     
     bool save_waveforms = false;
     bool all_the_events = true;
@@ -82,24 +99,45 @@ void calibration(){
     else if(Gain_Stability || top_fibers){
         const int nruns = 6; //6 LEDs x 1 HVs
     }
+    
+    /*
+    if (Gain_Stability){
+        //Create files.txt
+        string _outFileName = "./runs_1819/";
+        _outFileName += ("files.txt");
+        
+        ofstream outFile;
+        //outFile.open( _outFileName.c_str(), ios::app );
+        outFile.open( _outFileName.c_str(), ios::out );
+        
+        outFile <<"output_001819_0000.root"<<endl;
+        outFile <<"output_001819_0000.root"<<endl;
+        outFile <<"output_001819_0000.root"<<endl;
+        outFile <<"output_001819_0000.root"<<endl;
+        outFile <<"output_001819_0000.root"<<endl;
+        outFile <<"output_001819_0000.root"<<endl;
+        
+        outFile.close();
+    }
+    */
 
     //------------------------------------------------------
     // 3-4 teps!
     //------------------------------------------------------
     
     // 1)
-    WF_integration(label,pmt_info_file,save_waveforms,all_the_events,number_events,nruns,top_fibers);
+    //WF_integration(label,pmt_info_file,save_waveforms,all_the_events,number_events,nruns,top_fibers);
     //WF_integration_topfibers(label,pmt_info_file,save_waveforms,all_the_events,number_events,nruns,top_fibers);
     
     // 2)
-    // join_histograms(label);
+ //join_histograms(label);
     
     // 3)
-    //fit_2gaussians(label,pmt_info_file,nhvs);
+// fit_2gaussians(label,pmt_info_file,nhvs);
     //fit_2gaussians_topfibers(label,pmt_info_file,nhvs);
 
     //4)
-     //if(Gain_vs_HV) G_vs_HV(label,nhvs);
+   //  if(Gain_vs_HV) G_vs_HV(label,nhvs);
     
     // Other studies:
     //SPE_amplitude(label,pmt_info_file,save_waveforms,all_the_events,number_events,nruns,top_fibers);
