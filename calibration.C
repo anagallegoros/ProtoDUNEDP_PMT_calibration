@@ -35,7 +35,7 @@ void lets_pause (){
 void calibration(){
     
     // inputs:----------------------------------
-    string label = "runs_1006_1013"; //"runs_2112_2119";// "runs_2152_2159";//"runs_2144_2151"; //"runs_1997_2004";//"runs_2042_2049";//"runs_2029_2036";//"runs_1006_1013";
+    string label = "runs_2473_2480"; //"runs_2112_2119";// "runs_2152_2159";//"runs_2144_2151"; //"runs_1997_2004";//"runs_2042_2049";//"runs_2029_2036";//"runs_1006_1013";
     const int nhvs = 8;
     
     // 950-956: 7 HVs
@@ -51,6 +51,12 @@ void calibration(){
     // runs_1637_1644
     //"runs_1367_1373";
     //runs_2021_2028
+    //runs_2390_2397
+    //runs_2112_2119
+    //runs_1637_1644
+    //runs_1700_1707
+    //runs_1367_1373 7 HVs!
+    //runs_1891_1898
     
     //create folders:
     /*
@@ -130,14 +136,14 @@ void calibration(){
     //WF_integration_topfibers(label,pmt_info_file,save_waveforms,all_the_events,number_events,nruns,top_fibers);
     
     // 2)
- //join_histograms(label);
+//join_histograms(label);
     
     // 3)
-// fit_2gaussians(label,pmt_info_file,nhvs);
+fit_2gaussians(label,pmt_info_file,nhvs);
     //fit_2gaussians_topfibers(label,pmt_info_file,nhvs);
 
     //4)
-   //  if(Gain_vs_HV) G_vs_HV(label,nhvs);
+  //   if(Gain_vs_HV) G_vs_HV(label,nhvs);
     
     // Other studies:
     //SPE_amplitude(label,pmt_info_file,save_waveforms,all_the_events,number_events,nruns,top_fibers);

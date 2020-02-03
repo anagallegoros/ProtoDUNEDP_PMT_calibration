@@ -2,11 +2,12 @@
 //ProtoDUNE-DP PMT Calibration
 //Waveform integration to obtain SPE spectra
 //....................................................
-// Ana Gallego Ros (ana.gallego@ciemat.es)
+// Macro created by Ana Gallego Ros (ana.gallego@ciemat.es)
 // First version: June 2019
+// Second version: August 2019
 //....................................................
 
-void WF_integration(string label, string pmt_info_file, bool save_waveforms, bool all_the_events, const int number_events, const int nruns, bool top_fibers){
+void WF_integration_topfibers(string label, string pmt_info_file, bool save_waveforms, bool all_the_events, const int number_events, const int nruns, bool top_fibers){
     
     cout << " " << endl;
     cout << "****************************************************" << endl;
@@ -19,8 +20,6 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
     //----------------------------
     int more_plots = true;
     bool debug = false;
-    const int s_initial = 0; //first sample for pedestal calculation
-    const int s_last = 30; //last sample for pedestal calculation (15 = 240 ns --> signal > 300 ns)
     
     //------------------------------------------------------
     // do not change! (in principle)
@@ -35,6 +34,10 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
     int times = 0;
     int timess = 0;
     gStyle->SetOptStat(0);
+    
+    //16 ns, 1 us --> 63 samples
+    int first_sample = 43;
+    int last_sample = 63;
 
     //------------------------------------------------------
 
@@ -61,7 +64,7 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
         SN[i] = sn;
         info_ADC[i] = info_adc;
         i++;
-      //  cout<<sn<<" "<<info_adc<<endl;
+        //cout<<sn<<" "<<info_adc<<endl;
     }
     
     //-----------------------------------
@@ -92,12 +95,12 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
         hh[i] = new TH1D(namee,title,nbins,xmin,xmax); // <---- limits?
         hh[i]->Reset("");
     }
-    TH1D *h_30[n];
+    TH1D *h_20last[n];
     for (int i=0;i<n;i++) {
-        sprintf(namee,"h_30_%i",i);
-        sprintf(title,"title of h_30_%i",i);
-        h_30[i] = new TH1D(namee,title,nbins,0,5000); // <---- limits?
-        h_30[i]->Reset("");
+        sprintf(namee,"h_20last_%i",i);
+        sprintf(title,"title of h_20last_%i",i);
+        h_20last[i] = new TH1D(namee,title,nbins,0,5000); // <---- limits?
+        h_20last[i]->Reset("");
     }
     
     TH1D *h_rms[n];
@@ -112,9 +115,7 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
     for (int i=0;i<n;i++) {
         sprintf(namee,"h_peak_%i",i);
         sprintf(title,"title of h_peak_%i",i);
-        h_peak[i] = new TH1D(namee,title,126,0,126); // <---- Nsamples
-       // h_peak[i] = new TH1D(namee,title,75,0,75); // <---- Nsamples
-       // h_peak[i] = new TH1D(namee,title,63,0,63); // <---- Nsamples
+        h_peak[i] = new TH1D(namee,title,76,0,75); // <---- Nsamples
         h_peak[i]->Reset("");
     }
     
@@ -122,9 +123,7 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
     for (int i=0;i<n;i++) {
         sprintf(namee,"h_peak_ns_%i",i);
         sprintf(title,"title of h_peak_ns_%i",i);
-       //  h_peak_ns[i] = new TH1D(namee,title,63,0,1000); // <---- Nsamples x sampling
-        //h_peak_ns[i] = new TH1D(namee,title,75,0,1200); // <---- Nsamples x sampling
-      h_peak_ns[i] = new TH1D(namee,title,126,0,2000); // <---- Nsamples x sampling
+        h_peak_ns[i] = new TH1D(namee,title,76,0,1200); // <---- Nsamples x sampling
         h_peak_ns[i]->Reset("");
     }
     
@@ -181,7 +180,7 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
         for (int i=0;i<n;i++) {
             h[i]->Reset("");
             hh[i]->Reset("");
-            h_30[i]->Reset("");
+            h_20last[i]->Reset("");
             h_rms[i]->Reset("");
             h_peak[i]->Reset("");
             h_peak_ns[i]->Reset("");
@@ -202,8 +201,6 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
         }
         //------------------------------------------
 
-        //------------------------------------------
-        
         if(LED==1){
             channel[0] = info_ADC[0];
             channel[1] = info_ADC[1];
@@ -258,6 +255,7 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
             channel[6] = info_ADC[35];
         }// end LED 6
         
+        
         //output root file:
         TList *l = new TList(); // <---- list of histograms
         string outfile = label+"/SPE/"+label2+"_SPE.root";  // <-- output histogram
@@ -273,13 +271,12 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
             rms_cut[k] = .0;
         }
         
+        
         // START: DEFINE RMS CUT! ---------------------------------------------------------
-        for(int i=0; i<NEntries; i++){  // <---- Event loop (NEntries in general, change!)
+        for(int i=0; i<NEntries; i++){  // <---- Event loop
             
             rTree->GetEntry(i);
             const int Nsamples = tnsamples;
-            
-           // cout<<Nsamples<<endl;
             
             short tadc_value_0[Nsamples];
             short tadc_value_1[Nsamples];
@@ -297,8 +294,8 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[3]),&tadc_value_3);
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[4]),&tadc_value_4);
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[5]),&tadc_value_5);
-                for(int ii = s_initial; ii < s_last; ii++){ //new range?
-                    h_30[5]->Fill(tadc_value_5[ii]);
+                for(int ii = first_sample; ii < last_sample; ii++){ //new range?
+                    h_20last[5]->Fill(tadc_value_5[ii]);
                 }//end for 30 samples
             }//end if LED 1
             
@@ -318,9 +315,9 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[15]),&tadc_value_4);
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[16]),&tadc_value_5);
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[17]),&tadc_value_6);
-                for(int ii = s_initial; ii < s_last; ii++){ //new range?
-                    h_30[5]->Fill(tadc_value_5[ii]);
-                    h_30[6]->Fill(tadc_value_6[ii]);
+                for(int ii = first_sample; ii < last_sample; ii++){ //new range?
+                    h_20last[5]->Fill(tadc_value_5[ii]);
+                    h_20last[6]->Fill(tadc_value_6[ii]);
                 }//end for 30 samples
             }//end if LED 3
             
@@ -331,8 +328,8 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[21]),&tadc_value_3);
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[22]),&tadc_value_4);
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[23]),&tadc_value_5);
-                for(int ii = s_initial; ii < s_last; ii++){ //new range?
-                    h_30[5]->Fill(tadc_value_5[ii]);
+                for(int ii = first_sample; ii < last_sample; ii++){ //new range?
+                    h_20last[5]->Fill(tadc_value_5[ii]);
                 }//end for 30 samples
             }//end if LED 4
             
@@ -352,30 +349,31 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[33]),&tadc_value_4);
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[34]),&tadc_value_5);
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[35]),&tadc_value_6);
-                for(int ii = s_initial; ii < s_last; ii++){  //new range?
-                    h_30[5]->Fill(tadc_value_5[ii]);
-                    h_30[6]->Fill(tadc_value_6[ii]);
+                for(int ii = first_sample; ii < last_sample; ii++){  //new range?
+                    h_20last[5]->Fill(tadc_value_5[ii]);
+                    h_20last[6]->Fill(tadc_value_6[ii]);
                 }//end for 30 samples
             }//end if LED 6
             
-            for(int ii = s_initial; ii < s_last; ii++){  //new range?
-                h_30[0]->Fill(tadc_value_0[ii]);
-                h_30[1]->Fill(tadc_value_1[ii]);
-                h_30[2]->Fill(tadc_value_2[ii]);
-                h_30[3]->Fill(tadc_value_3[ii]);
-                h_30[4]->Fill(tadc_value_4[ii]);
+            
+            
+            for(int ii = first_sample; ii < last_sample; ii++){  //new range?
+                h_20last[0]->Fill(tadc_value_0[ii]);
+                h_20last[1]->Fill(tadc_value_1[ii]);
+                h_20last[2]->Fill(tadc_value_2[ii]);
+                h_20last[3]->Fill(tadc_value_3[ii]);
+                h_20last[4]->Fill(tadc_value_4[ii]);
             }//end for 30 samples
 
             for(int m=0;m<Npmts;m++){
-                rms[m] = h_30[m]->GetRMS();
-                h_30[m]->Reset(""); //<-- important!
+                rms[m] = h_20last[m]->GetRMS();
+                h_20last[m]->Reset(""); //<-- important!
                // cout<<m<<" "<<i<<endl;
                 h_rms[m]->Fill(rms[m]);
             }
             
         }//end for i events
 
-        // remove 12%
         for(int m=0;m<Npmts;m++){
             double xq[1];
             double yq[1];
@@ -400,20 +398,10 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
                 h_rms[ij]->GetXaxis()->SetTitle("Pedestal RMS (ADC)");
                 h_rms[ij]->SetTitle(Form("Run %s, LED %i, PMT %i (ADC ch# %i)",run.c_str(),LED,ij,channel[ij]));
             }
-
-             //   cc11->Print(Form("%s/more_plots/ped_RMS_%s.pdf",label.c_str(),label2.c_str()),"pdf");
-
-                if(timess==0){ //first
-                    //cc11->Print(Form("%s/more_plots/ped_RMS_%s.pdf(",label.c_str(),label2.c_str()),"pdf");
-                    cc11->Print(Form("%s/more_plots/ped_RMS.pdf(",label.c_str()),"pdf");
-                }
-                else if(timess==nruns-1){ //last
-                    cc11->Print(Form("%s/more_plots/ped_RMS.pdf)",label.c_str()),"pdf");
-                }
-                else{ //rest
-                    cc11->Print(Form("%s/more_plots/ped_RMS.pdf",label.c_str()),"pdf");
-                }
-        
+           
+            cc11->Print(Form("%s/more_plots/ped_RMS_%s.pdf",label.c_str(),label2.c_str()),"pdf");
+           
+            
             timess++;
             delete cc11;
             
@@ -432,7 +420,7 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
         double time0[n];
         double time1[n];
 
-        for(int i=0; i<NEntries; i++){ // <---- Event loop (NEntries in general, change!)
+        for(int i=0; i<NEntries; i++){ // <---- Event loop
             
             rTree->GetEntry(i);
 
@@ -451,6 +439,12 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[3]),&tadc_value_3);
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[4]),&tadc_value_4);
                 rTree->SetBranchAddress(Form("adc_value_%i",info_ADC[5]),&tadc_value_5);
+//                rTree->SetBranchAddress("adc_value_15",&tadc_value_0);
+//                rTree->SetBranchAddress("adc_value_17",&tadc_value_1);
+//                rTree->SetBranchAddress("adc_value_22",&tadc_value_2);
+//                rTree->SetBranchAddress("adc_value_36",&tadc_value_3);
+//                rTree->SetBranchAddress("adc_value_37",&tadc_value_4);
+//                rTree->SetBranchAddress("adc_value_38",&tadc_value_5);
                 min[5] = tadc_value_5[0];
             }// end LED 1
             
@@ -510,7 +504,7 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
             min[3] = tadc_value_3[0];
             min[4] = tadc_value_4[0];
 
-            for(int ii = 0; ii < Nsamples; ii++){//Nsamples; ii++){ //find minimum value
+            for(int ii = 0; ii < Nsamples; ii++){ //find minimum value
                 
                 if(tadc_value_0[ii]<=min[0]){ // < or <= changes the position of peak
                     min[0] = tadc_value_0[ii];
@@ -532,13 +526,13 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
                     min[4] = tadc_value_4[ii];
                     minimum[4] = ii;
                 }
-                if(LED==1 || LED==4){
+                if(LED==1){
                     if(tadc_value_5[ii]<=min[5]){
                         min[5] = tadc_value_5[ii];
                         minimum[5] = ii;
                     }
-                }//end LEDs 1, 4
-                if(LED==3 || LED==6){
+                }//end LED 1
+                if(LED==3){
                     if(tadc_value_5[ii]<=min[5]){
                         min[5] = tadc_value_5[ii];
                         minimum[5] = ii;
@@ -548,7 +542,22 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
                         minimum[6] = ii;
                     }
                 }//end LED 3
-
+                if(LED==4){
+                    if(tadc_value_5[ii]<=min[5]){
+                        min[5] = tadc_value_5[ii];
+                        minimum[5] = ii;
+                    }
+                }//end LED 4
+                if(LED==6){
+                    if(tadc_value_5[ii]<=min[5]){
+                        min[5] = tadc_value_5[ii];
+                        minimum[5] = ii;
+                    }
+                    if(tadc_value_6[ii]<=min[6]){
+                        min[6] = tadc_value_6[ii];
+                        minimum[6] = ii;
+                    }
+                }//end LED 6
             }// end for ii samples
 
             for(int m=0;m<Npmts;m++){
@@ -562,9 +571,7 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
                 max_allrange[m] = h_peak[m]->GetBinContent(peak_bin_allrange[m]); //returns maximum in range
                 
                 //************************************************
-               // h_peak[m]->GetXaxis()->SetRange(10,43); // check! 160 ns - 688 ns 63 samples
-                //h_peak[m]->GetXaxis()->SetRange(10,31); // check! CROSSTALKS
-                  h_peak[m]->GetXaxis()->SetRange(50,88); // check! 400 ns - 1400 ns 126 samples
+                h_peak[m]->GetXaxis()->SetRange(10,45); // check!
                 //************************************************
                 peak_bin[m] = h_peak[m]->GetMaximumBin(); //returns maximum in range
                 peak_x[m] = h_peak[m]->GetXaxis()->GetBinCenter(peak_bin[m]);
@@ -580,6 +587,19 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
             time1[m]=(sampling*(peak_x[m]))+75.0; //ns
             if(debug) cout<<m<<" "<<peak_x[m]<<" "<<time0[m]<<" "<<time1[m]<<endl;
         }
+        
+        cout<<peak_x[4]<<" "<<time0[4]<<" "<<time1[4]<<endl;
+
+        
+        string check_run = Form("%s",run.c_str());
+        if(check_run=="1383" && LED==2){
+            time0[4]=280.0; //ns
+            time1[4]=430.0; //ns
+            cout<<peak_x[4]<<" "<<time0[4]<<" "<<time1[4]<<endl;
+        }
+        
+        
+        
         //cout<<peak_bin[5]<<" "<<peak_x[5]<<" "<<ceil(peak_x[5])<<endl;
 
         if(more_plots){
@@ -626,6 +646,7 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
             else{
                 c12->Divide(3,2);
             }
+            
             for(int ij=0;ij<Npmts;ij++){
                 c12->cd(ij+1);
                 h_peak[ij]->SetLineWidth(2);
@@ -633,32 +654,22 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
                 h_peak[ij]->Draw("");
                 //h_peak[ij]->GetYaxis()->SetTitle("Number of events");
                 h_peak[ij]->GetXaxis()->SetTitle("# sample with minimum ADC");
-                h_peak[ij]->SetTitle(Form("Run %s, LED %i, PMT %i",run.c_str(),LED,ij));
-            }
-            
-            //c12->Print(Form("%s/more_plots/sample_signal_%s.pdf",label.c_str(),label2.c_str()),"pdf");
-            //c11->Print(Form("%s/more_plots/time_signal_%s.pdf",label.c_str(),label2.c_str()),"pdf");
-            
-            
-            if(times==0){ //first
-                //c11->Print(Form("%s/more_plots/time_signal_%s.pdf(",label.c_str(),label2.c_str()),"pdf");
-                c11->Print(Form("%s/more_plots/time_signal.pdf(",label.c_str()),"pdf");
-            }
-            else if(times==nruns-1){ //last
-                c11->Print(Form("%s/more_plots/time_signal.pdf)",label.c_str()),"pdf");
-            }
-            else{ //rest
-                c11->Print(Form("%s/more_plots/time_signal.pdf",label.c_str()),"pdf");
+                h_peak[ij]->SetTitle(Form("Run %s, LED %i, PMT %i (ADC ch# %i)",run.c_str(),LED,ij,channel[ij]));
             }
 
+            
+            c12->Print(Form("%s/more_plots/sample_signal_%s.pdf",label.c_str(),label2.c_str()),"pdf");
+            c11->Print(Form("%s/more_plots/time_signal_%s.pdf",label.c_str(),label2.c_str()),"pdf");
+            
             delete c11;
-            //delete c12;
+            delete c12;
             //cout<<"times "<<times<<endl;
             times++;
         }//end more plots
         // END: DEFINE INTREGRATION WINDOW! --------------------------------------------
 
-
+        
+        
         if(all_the_events){
             const int last = NEntries;// complete analysis
             cout << "Integrating " << last << " waveforms..." << endl;
@@ -667,6 +678,7 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
             const int last = number_events;//20000;//19993; //tests
             cout << "Integrating " << last << " waveforms..." << endl;
         }
+        
         
         ///////////////////////////////////////////////////////////////
         for(int i=0; i<last; i++){ //NEntries;i++){   <---- Event loop (MAIN)
@@ -684,6 +696,7 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
             
             int tTimeStamp;
             //short tadc_value[7][Nsamples];
+
             short tadc_value_0[Nsamples];
             short tadc_value_1[Nsamples];
             short tadc_value_2[Nsamples];
@@ -769,36 +782,36 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
                 ADC[k] = .0;
                 ped[k] = .0;
                 rms[k] = .0;
-                h_30[k]->Reset(""); //<-- important!
+                h_20last[k]->Reset(""); //<-- important!
             }
      
             // CHECK RMS CUT:-------------------------
-            for(int ii = s_initial; ii < s_last; ii++){
-                h_30[0]->Fill(tadc_value_0[ii]);
-                h_30[1]->Fill(tadc_value_1[ii]);
-                h_30[2]->Fill(tadc_value_2[ii]);
-                h_30[3]->Fill(tadc_value_3[ii]);
-                h_30[4]->Fill(tadc_value_4[ii]);
+            for(int ii = first_sample; ii < last_sample; ii++){
+                h_20last[0]->Fill(tadc_value_0[ii]);
+                h_20last[1]->Fill(tadc_value_1[ii]);
+                h_20last[2]->Fill(tadc_value_2[ii]);
+                h_20last[3]->Fill(tadc_value_3[ii]);
+                h_20last[4]->Fill(tadc_value_4[ii]);
             }//end for 30 samples
             
             if(LED==1 || LED==4){
-                for(int ii = s_initial; ii < s_last; ii++){
-                    h_30[5]->Fill(tadc_value_5[ii]);
+                for(int ii = first_sample; ii < last_sample; ii++){
+                    h_20last[5]->Fill(tadc_value_5[ii]);
                 }//end for 30 samples
             }//end LED 1
             
             if(LED==3 || LED==6){
-                for(int ii = s_initial; ii < s_last; ii++){
-                    h_30[5]->Fill(tadc_value_5[ii]);
-                    h_30[6]->Fill(tadc_value_6[ii]);
+                for(int ii = first_sample; ii < last_sample; ii++){
+                    h_20last[5]->Fill(tadc_value_5[ii]);
+                    h_20last[6]->Fill(tadc_value_6[ii]);
                 }//end for 30 samples
             }//end LED 3
             
             // ---------------------------------------
             // OBTAIN RMS & PEDESTAL / CHANNEL:
             for(int m=0;m<Npmts;m++){
-                rms[m] = h_30[m]->GetRMS();
-                ped[m] = h_30[m]->GetMean();
+                rms[m] = h_20last[m]->GetRMS();
+                ped[m] = h_20last[m]->GetMean();
             }
             // ---------------------------------------
 
@@ -822,8 +835,6 @@ void WF_integration(string label, string pmt_info_file, bool save_waveforms, boo
                 if(LED==3 || LED==6){
                     y6[ii] = tadc_value_6[ii];
                 }
-                
-                // put together in a loop?
                 
                 if(x[ii]>time0[0] && x[ii]<time1[0]){
                     ADC[0] = ADC[0] + (tadc_value_0[ii]-ped[0]);

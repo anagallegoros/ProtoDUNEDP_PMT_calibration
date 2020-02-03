@@ -259,6 +259,15 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
                 }
             }
             
+            if(label=="runs_2060_2067"){
+ 
+                if(SN[i]=="FA0124" && hv==6){
+                    x1ped = -20e6;
+                    x2ped = 10e6;
+                }
+                
+            }//end label runs_2420_2427
+            
             a[total] = x1ped;
             b[total] = x2ped;
             //--------------------------------------------
@@ -311,7 +320,7 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
                 
                 // *** old ones copied in txt ***
                 
-                 if(label=="runs_2021_2028"){
+                 if(label=="runs_2021_2028" || label=="runs_1997_2004" || label=="runs_2144_2151" || label=="runs_2152_2159" || label=="runs_2112_2119" || label=="runs_2390_2397"){
                      if(SN[i]=="FA0129" && hv==3){
                          x1spe = 20e6;
                          x2spe = 120e6;
@@ -320,7 +329,14 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
                          x1spe = 50e6;
                          x2spe = 180e6;
                      }
-
+                     if(SN[i]=="FA0121" && hv==3){
+                         x1spe = 6e6;
+                         x2spe = 40e6;
+                     }
+                     if(SN[i]=="FA0121" && hv==4){
+                         x1spe = 10e6;
+                         x2spe = 40e6;
+                     }
                      if(SN[i]=="FA0121" && hv==5){
                          x1spe = 10e6;
                          x2spe = 400e6;
@@ -332,6 +348,10 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
                      if(SN[i]=="FA0136" && hv==7){
                          x1spe = 200e6;
                          x2spe = 640e6;
+                     }
+                     if(SN[i]=="FA0136" && hv==8){
+                         x1spe = 250e6;
+                         x2spe = 1000e6;
                      }
                      if(SN[i]=="FA0149" && hv==4){
                          x1spe = 50e6;
@@ -375,13 +395,324 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
                          x2spe = 400e6;
                      }
                      if(SN[i]=="FA0130" && hv==7){
-                         x1spe = 400e6;
+                         x1spe = 200e6;
                          x2spe = 900e6;
                      }
 
-                     
-                     
                  }//end label 2021_2028
+                
+                if(label=="runs_1997_2004"){
+                    if(SN[i]=="FC0005" && hv==3){
+                        x1spe = 100e6;
+                        x2spe = 320e6;
+                    }
+                    if(SN[i]=="FC0005" && hv==4){
+                        x1spe = 200e6;
+                        x2spe = 420e6;
+                    }
+                    if(SN[i]=="FA0124" && hv==7){
+                        x1spe = 10e6;
+                        x2spe = 40e6;
+                    }
+                }//end label 1997_2004
+                
+                 if(label=="runs_2152_2159"){
+                     if(SN[i]=="FA0124" && hv==6){
+                         x1spe = 10e6;
+                         x2spe = 25e6;
+                     }
+                 }//end label 2152_2159
+                
+                if(label=="runs_2144_2151"){
+                    if(SN[i]=="FA0135" && hv==5){
+                        x1spe = 20e6;
+                        x2spe = 60e6;
+                    }
+                    if(SN[i]=="FA0135" && hv==6){
+                        x1spe = 20e6;
+                        x2spe = 100e6;
+                    }
+                    if(SN[i]=="FA0135" && hv>6){
+                        x1spe = 20e6;
+                        x2spe = 100e6;
+                    }
+                    
+                    
+                    if(SN[i]=="FC0005" && hv==5){
+                        x1spe = 200e6;
+                        x2spe = 600e6;
+                    }
+                    
+                    if(SN[i]=="FC0005" && hv==6){
+                        x1spe = 200e6;
+                        x2spe = 800e6;
+                    }
+                    
+                    if(SN[i]=="FC0005" && hv==7){
+                        x1spe = 300e6;
+                        x2spe = 800e6;
+                    }
+                    
+                    if(SN[i]=="FA0133" && hv==5){
+                        x1spe = 100e6;
+                        x2spe = 300e6;
+                    }
+                    
+                    if(SN[i]=="FA0133" && hv==7){
+                        x1spe = 200e6;
+                        x2spe = 600e6;
+                    }
+                }
+                
+                if(label=="runs_2390_2397"){
+                    if(SN[i]=="FA0124" && hv==6){
+                        x1spe = 10e6;
+                        x2spe = 25e6;
+                    }
+                    
+                    if(SN[i]=="FA0111" && hv==6){
+                        x1spe = 10e6;
+                        x2spe = 25e6;
+                    }
+                }//end label runs_2390_2397
+                
+                if(label=="runs_2420_2427"){
+                    
+                    if(SN[i]=="FA0111" && hv==6){
+                        x1spe = 10e6;
+                        x2spe = 25e6;
+                    }
+                    if(SN[i]=="FA0129" && hv==3){
+                        x1spe = 30e6;
+                        x2spe = 120e6;
+                    }
+                    if(SN[i]=="FA0124" && hv==6){
+                        x1spe = 10e6;
+                        x2spe = 30e6;
+                    }
+                    if(SN[i]=="FA0112" && hv==3){
+                        x1spe = 25e6;
+                        x2spe = 80e6;
+                    }
+                }//end label runs_2420_2427
+                
+                if(label=="runs_2060_2067"){
+
+                    if(SN[i]=="FC0005" && hv==2){
+                        x1spe = 50e6;
+                        x2spe = 180e6;
+                    }
+                    if(SN[i]=="FC0005" && hv==3){
+                        x1spe = 100e6;
+                        x2spe = 300e6;
+                    }
+                    if(SN[i]=="FC0005" && hv==4){
+                        x1spe = 200e6;
+                        x2spe = 400e6;
+                    }
+                    if(SN[i]=="FA0114" && hv==1){
+                        x2spe = 150e6;
+                    }
+                    if(SN[i]=="FA0114" && hv==2){
+                        x2spe = 200e6;
+                    }
+                    if(SN[i]=="FA0114" && hv==3){
+                        x1spe = 100e6;
+                        x2spe = 250e6;
+                    }
+                    if(SN[i]=="FA0114" && hv==4){
+                        x1spe = 120e6;
+                        x2spe = 300e6;
+                    }
+                
+                    if(SN[i]=="FA0124" && hv==6){
+                        x1spe = 10e6;
+                        x2spe = 25e6;
+                    }
+                    if(SN[i]=="FA0148" && hv==6){
+                        x1spe = 150e6;
+                        x2spe = 350e6;
+                    }
+                    if(SN[i]=="FA0105" && hv==6){
+                        x1spe = 20e6;
+                        x2spe = 90e6;
+                    }
+                    
+                    if(SN[i]=="FA0110" && hv==3){
+                        x1spe = 100e6;
+                        x2spe = 220e6;
+                    }
+                    
+                    if(SN[i]=="FA0110" && hv==4){
+                        x1spe = 100e6;
+                        x2spe = 250e6;
+                    }
+
+                    
+                    if(SN[i]=="FA0132" && hv==2){
+                        x1spe = 40e6;
+                        x2spe = 110e6;
+                    }
+
+                    if(SN[i]=="FA0132" && hv==4){
+                        x1spe = 60e6;
+                        x2spe = 190e6;
+                    }
+
+                }//end label runs_2420_2427
+                
+                if(label=="runs_2433_2440"){
+                    
+                    if(SN[i]=="FA0105" && hv==7){
+                        x1spe = 30e6;
+                        x2spe = 120e6;
+                    }
+                    if(SN[i]=="FA0105" && hv==8){
+                        x1spe = 30e6;
+                        x2spe = 130e6;
+                    }
+
+                    if(SN[i]=="FA0124" && hv==6){
+                        x1spe = 15e6;
+                        x2spe = 35e6;
+                    }
+    
+                }//end label runs_2433_2440
+                
+                if(label=="runs_1891_1898"){
+                    
+                    if(SN[i]=="FA0150" && hv==3){
+                        x1spe = 50e6;
+                        x2spe = 120e6;
+                    }
+                    if(SN[i]=="FA0129" && hv==1){
+                        x1spe = 20e6;
+                        x2spe = 60e6;
+                    }
+                    if(SN[i]=="FA0129" && hv==3){
+                        x1spe = 30e6;
+                        x2spe = 120e6;
+                    }
+                    if(SN[i]=="FA0129" && hv==4){
+                        x2spe = 200e6;
+                    }
+                    if(SN[i]=="FA0129" && hv==5){
+                        x2spe = 300e6;
+                    }
+                    if(SN[i]=="FA0116" && hv==7){
+                        x2spe = 45e6;
+                    }
+                    if(SN[i]=="FA0105" && hv==6){
+                        x2spe = 80e6;
+                    }
+                    if(SN[i]=="FA0105" && hv==7){
+                        x2spe = 100e6;
+                    }
+                    if(SN[i]=="FA0105" && hv==8){
+                        x2spe = 110e6;
+                    }
+                    if(SN[i]=="FA0112" && hv==3){
+                        x2spe = 70e6;
+                    }
+                    if(SN[i]=="FA0112" && hv==5){
+                        x2spe = 150e6;
+                    }
+                    if(SN[i]=="FA0153" && hv==2){
+                        x2spe = 160e6;
+                    }
+                    if(SN[i]=="FA0153" && hv==4){
+                        x1spe = 150e6;
+                        x2spe = 400e6;
+                    }
+                    if(SN[i]=="FA0153" && hv==5){
+                        x1spe = 200e6;
+                        x2spe = 450e6;
+                    }
+                    if(SN[i]=="FA0153" && hv==6){
+                        x1spe = 250e6;
+                        x2spe = 500e6;
+                    }
+                    if(SN[i]=="FA0146" && hv==3){
+                        x1spe = 90e6;
+                        x2spe = 190e6;
+                    }
+                    if(SN[i]=="FA0130" && hv==3){
+                        x1spe = 70e6;
+                    }
+                    if(SN[i]=="FA0135" && hv==5){
+                        x1spe = 10e6;
+                        x2spe = 20e6;
+                    }
+                    if(SN[i]=="FA0135" && hv==8){
+                        x1spe = 15e6;
+                    }
+                    if(SN[i]=="FA0110" && hv==2){
+                        x1spe = 60e6;
+                    }
+                    if(SN[i]=="FA0110" && hv==3){
+                        x1spe = 80e6;
+                        x2spe = 180e6;
+                    }
+                    if(SN[i]=="FA0110" && hv==4){
+                        x1spe = 80e6;
+                        x2spe = 180e6;
+                    }
+                    if(SN[i]=="FA0124" && hv==6){
+                        x1spe = 10e6;
+                        x2spe = 20e6;
+                    }
+                    if(SN[i]=="FA0124" && hv==8){
+                        x1spe = 10e6;
+                    }
+                    if(SN[i]=="FA0136" && hv==3){
+                        x1spe = 60e6;
+                        x2spe = 150e6;
+                    }
+                    if(SN[i]=="FA0136" && hv==4){
+                        x1spe = 100e6;
+                    }
+                    if(SN[i]=="FA0136" && hv==5){
+                        x1spe = 100e6;
+                    }
+                    if(SN[i]=="FC0005" && hv==3){
+                        x1spe = 150e6;
+                    }
+                    if(SN[i]=="FC0005" && hv==5){
+                        x1spe = 200e6;
+                        x2spe = 400e6;
+                    }
+                    if(SN[i]=="FC0005" && hv==6){
+                        x1spe = 220e6;
+                        x2spe = 420e6;
+                    }
+                    if(SN[i]=="FA0114" && hv==2){
+                        x1spe = 80e6;
+                        x2spe = 200e6;
+                    }
+                    if(SN[i]=="FA0114" && hv==3){
+                        x1spe = 100e6;
+                        x2spe = 200e6;
+                    }
+                    if(SN[i]=="FA0114" && hv==4){
+                        x1spe = 100e6;
+                        x2spe = 220e6;
+                    }
+                }//end label runs_1891_1898
+                
+                if(label=="runs_1901_1908"){
+                    if(SN[i]=="FA0124" && hv==6){
+                        x1spe = 10e6;
+                        x2spe = 30e6;
+                    }
+                    if(SN[i]=="FA0124" && hv==7){
+                        x1spe = 10e6;
+                        x2spe = 35e6;
+                    }
+                    if(SN[i]=="FA0115" && hv==3){
+                        x2spe = 40e6;
+                    }
+                }//end label runs_1901_1908
+                
                 
                 ccc[total] = x1spe;
                 d[total] = x2spe;
@@ -439,7 +770,7 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
             
             // *** old ones copied in txt ***
 
-            if(label=="runs_2021_2028"){
+            if(label=="runs_2021_2028" || label=="runs_1997_2004" || label=="runs_2144_2151" || label=="runs_2152_2159" || label=="runs_2112_2119"){
 
                 if(SN[i]=="FA0147" && hv>4) IGNORE[total] = 1;
                 if(SN[i]=="FA0111" && hv<3) IGNORE[total] = 1;
@@ -463,17 +794,19 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
                 if(SN[i]=="FA0137" && hv<5) IGNORE[total] = 1;
                 if(SN[i]=="FA0134" && hv==7) IGNORE[total] = 1;
                 //if(SN[i]=="FA0146" && hv==) IGNORE[total] = 1;
-                if(SN[i]=="FA0121" && hv<5) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv<3) IGNORE[total] = 1;
                 if(SN[i]=="FA0121" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv==6) IGNORE[total] = 1;
                 if(SN[i]=="FA0119" && hv<4) IGNORE[total] = 1;
-                if(SN[i]=="FA0119" && hv==6) IGNORE[total] = 1;
+               // if(SN[i]=="FA0119" && hv==6) IGNORE[total] = 1;
                 if(SN[i]=="FA0115" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv==5) IGNORE[total] = 1;
                 if(SN[i]=="FA0115" && hv==6) IGNORE[total] = 1;
-                if(SN[i]=="FA0115" && hv==8) IGNORE[total] = 1;
                 if(SN[i]=="FA0136" && hv<3) IGNORE[total] = 1;
                 if(SN[i]=="FA0136" && hv==5) IGNORE[total] = 1;
                 if(SN[i]=="FA0136" && hv==6) IGNORE[total] = 1;
-                if(SN[i]=="FA0136" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0136" && hv==4) IGNORE[total] = 1;
                 if(SN[i]=="FA0106" && hv<3) IGNORE[total] = 1;
                 if(SN[i]=="FA0106" && hv==8) IGNORE[total] = 1;
                 if(SN[i]=="FC0005" && hv>4) IGNORE[total] = 1;
@@ -490,15 +823,593 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
                 if(SN[i]=="FA0148" && hv==3) IGNORE[total] = 1;
                 if(SN[i]=="FA0148" && hv==5) IGNORE[total] = 1;
                 if(SN[i]=="FA0135" && hv<2) IGNORE[total] = 1;
-                if(SN[i]=="FA0135" && hv>3) IGNORE[total] = 1;
+                //if(SN[i]=="FA0135" && hv>3) IGNORE[total] = 1;
                 if(SN[i]=="FA0110" && hv>5) IGNORE[total] = 1;
                 if(SN[i]=="FA0124" && hv<7) IGNORE[total] = 1;
                 if(SN[i]=="FA0132" && hv>5) IGNORE[total] = 1;
                 if(SN[i]=="FA0132" && hv==3) IGNORE[total] = 1;
-                if(SN[i]=="FA0130" && hv<4) IGNORE[total] = 1;
-                if(SN[i]=="FA0130" && hv==7) IGNORE[total] = 1;
+//                if(SN[i]=="FA0130" && hv<4) IGNORE[total] = 1;
+//                if(SN[i]=="FA0130" && hv==7) IGNORE[total] = 1;
                 
-            }//end if label 2021_2028
+            }//end if label all
+            
+            if(label=="runs_1997_2004"){
+                if(SN[i]=="FA0113" && hv==6) IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0116" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv==8) IGNORE[total] = 0;
+                if(SN[i]=="FA0112" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0104" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0153" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv==6) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv==4) IGNORE[total] = 0;
+                if(SN[i]=="FA0146" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv==6) IGNORE[total] = 0;
+                if(SN[i]=="FA0115" && hv==5) IGNORE[total] = 0;
+                if(SN[i]=="FA0115" && hv==6) IGNORE[total] = 0;
+                if(SN[i]=="FA0136") IGNORE[total] = 0;
+                if(SN[i]=="FA0136" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0106" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FC0004" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0155" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0149" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0122" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0122" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0148" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv<5) IGNORE[total] = 1;
+                if(SN[i]=="FA0110" && hv>3) IGNORE[total] = 1;
+                if(SN[i]=="FA0130" && hv>3) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && hv==8) IGNORE[total] = 1;
+            }//end if label 1997_2004
+            
+            if(label=="runs_2112_2119"){
+                if(SN[i]=="FA0111" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0111" && hv==6) IGNORE[total] = 0;
+                if(SN[i]=="FA0150" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0150" && hv==4) IGNORE[total] = 0;
+                if(SN[i]=="FA0113" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0116" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0112" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0112" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0104" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0146" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0146" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0121") IGNORE[total] = 0;
+                if(SN[i]=="FA0121" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv==6) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv>2) IGNORE[total] = 0;
+                if(SN[i]=="FA0136") IGNORE[total] = 0;
+                if(SN[i]=="FA0136" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0136" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0106" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0148" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0110" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0124" && hv==6) IGNORE[total] = 0;
+                if(SN[i]=="FA0132" && hv==3) IGNORE[total] = 0;
+                if(SN[i]=="FA0130" && hv>6) IGNORE[total] = 1;
+            }//end if 2112_2119
+            
+            if(label=="runs_2152_2159"){
+                if(SN[i]=="FA0156") IGNORE[total] = 1;
+                if(SN[i]=="FA0133") IGNORE[total] = 1;
+                if(SN[i]=="FA0135") IGNORE[total] = 1;
+                if(SN[i]=="FC0005") IGNORE[total] = 1;
+                
+                if(SN[i]=="FA0147" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0147" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0147" && hv>4) IGNORE[total] = 0;
+                if(SN[i]=="FA0147" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0111" && hv>4) IGNORE[total] = 0;
+                if(SN[i]=="FA0150" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0105") IGNORE[total] = 0;
+                if(SN[i]=="FA0105" && hv<6) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0146" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0146" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0136") IGNORE[total] = 0;
+//                if(SN[i]=="FA0136" && hv==3) IGNORE[total] = 1;
+//                if(SN[i]=="FA0136" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FC0004" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FC0004" && hv==5) IGNORE[total] = 0;
+                if(SN[i]=="FC0004" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0155" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0149" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0149" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0148" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0148" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0124" && hv==6) IGNORE[total] = 0;
+            }//end if 2152_2159
+
+            
+            if(label=="runs_2144_2151"){
+                if(SN[i]=="FA0156" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv<5) IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv==8) IGNORE[total] = 1;
+                
+                if(SN[i]=="FA0135" && hv<6) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv==2) IGNORE[total] = 0;
+
+                if(SN[i]=="FC0005") IGNORE[total] = 0;
+                if(SN[i]=="FC0005" && hv<5) IGNORE[total] = 1;
+                if(SN[i]=="FC0005" && hv>7) IGNORE[total] = 1;
+     
+
+            }
+            
+            
+            if(label=="runs_2390_2397"){
+                
+                if(SN[i]=="FA0147") IGNORE[total] = 1;
+                if(SN[i]=="FA0111" && hv<6) IGNORE[total] = 1;
+                if(SN[i]=="FA0150" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0113" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0156") IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0129" && hv==2) IGNORE[total] = 1;
+                if(SN[i]=="FA0129" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0116" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0112" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0139" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0153" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0137" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0146" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0119") IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0106") IGNORE[total] = 1;
+                if(SN[i]=="FC0005" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0149" && hv>6) IGNORE[total] = 1;
+              //  if(SN[i]=="FA0122" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0110" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0124" && hv<6) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0130" && hv>6) IGNORE[total] = 1;
+
+            }//end if label 2390_2397
+            
+            if(label=="runs_1637_1644"){
+                
+                if(SN[i]=="FA0147") IGNORE[total] = 1;
+                if(SN[i]=="FA0111" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0150" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0150" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0113" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0156") IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv<3) IGNORE[total] = 1;
+                //if(SN[i]=="FA0129" && hv==2) IGNORE[total] = 1;
+                if(SN[i]=="FA0129" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0116" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0112" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0139" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0139" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0104" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0153" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0137" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0137" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0146" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0119") IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0136" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0106") IGNORE[total] = 1;
+                if(SN[i]=="FC0005" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FC0004" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FC0004" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0155" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0149" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0122" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0148" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv>3) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv==6) IGNORE[total] = 0;
+                if(SN[i]=="FA0135" && hv==8) IGNORE[total] = 0;
+                if(SN[i]=="FA0110" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0124" && hv<6) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && hv>4) IGNORE[total] = 1;
+                //if(SN[i]=="FA0132" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0130" && hv>6) IGNORE[total] = 1;
+                
+            }//end if label 1637_1644
+            
+            if(label=="runs_2420_2427"){
+                
+                if(SN[i]=="FA0147") IGNORE[total] = 1;
+                if(SN[i]=="FA0111" && hv<6) IGNORE[total] = 1;
+                if(SN[i]=="FA0150" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0113" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0156") IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv>5) IGNORE[total] = 1;
+                //if(SN[i]=="FA0129" && hv==2) IGNORE[total] = 1;
+                if(SN[i]=="FA0129" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0116" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0112" && hv>5) IGNORE[total] = 1;
+                //if(SN[i]=="FA0112" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0139" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0153" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0137" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0146" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0119") IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0136" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0106") IGNORE[total] = 1;
+                if(SN[i]=="FC0005" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0149" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0122" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0148" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0110" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0124" && hv<6) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && hv>4) IGNORE[total] = 1;
+                //if(SN[i]=="FA0132" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0130" && hv>6) IGNORE[total] = 1;
+                
+            }//end if label 2420_2427
+            
+            if(label=="runs_2060_2067"){
+                
+                if(SN[i]=="FA0147" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0147" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0111" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0111" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0150" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0113" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0156" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0129" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0129" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0116" && hv<5) IGNORE[total] = 1;//?
+                if(SN[i]=="FA0105" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0112" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0112" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0139" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0139" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0104" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0153" && hv>3) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0137" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0146" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0119" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0136" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0106" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FC0005" && hv>4) IGNORE[total] = 1; //!
+                if(SN[i]=="FC0004" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0155" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0149" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0122" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv>4) IGNORE[total] = 1;//!
+                if(SN[i]=="FA0148" && hv==1) IGNORE[total] = 1;//!
+                if(SN[i]=="FA0148" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0148" && hv==6) IGNORE[total] = 0;
+                if(SN[i]=="FA0135" && hv<5) IGNORE[total] = 1;
+                if(SN[i]=="FA0110" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0124" && hv<6) IGNORE[total] = 1;//!
+                if(SN[i]=="FA0132" && hv>4) IGNORE[total] = 1;
+                //if(SN[i]=="FA0132" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0130" && hv>4) IGNORE[total] = 1;
+                
+            }//end if label 2060_2067
+            
+
+            
+            if(label=="runs_1700_1707"){
+                
+                //oscilloscope:
+                 if(SN[i]=="FA0156" || SN[i]=="FA0147" || SN[i]=="FA0106" || SN[i]=="FA0119") IGNORE[total] = 1;
+                if(SN[i]=="FA0111" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0150" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0113" && hv>3) IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0129" || SN[i]=="FA0116" || SN[i]=="FA0112" || SN[i]=="FA0105" || SN[i]=="FC0005" || SN[i]=="FA0124" || SN[i]=="FA0119") IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv<2) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv>3) IGNORE[total] = 1;
+                if(SN[i]=="FA0139" && hv>3) IGNORE[total] = 1;
+                if(SN[i]=="FA0104" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv>3) IGNORE[total] = 1;
+                if(SN[i]=="FA0137" && hv<6) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0146" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FC0004" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FC0004" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0149" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0122" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0110" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && hv>5) IGNORE[total] = 1;
+                
+            }//end if label 1700
+            
+            
+            if(label=="runs_1367_1373"){
+                
+                if(LED[i]==1 || LED[i]==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0129" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0129" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0116" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv==6) IGNORE[total] = 1;
+                if(SN[i]=="FA0112" && hv>4) IGNORE[total] = 1;
+                //if(SN[i]=="FA0157" && hv==5) IGNORE[total] = 1;
+                //if(SN[i]=="FA0157" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv>3) IGNORE[total] = 1;
+                if(SN[i]=="FA0139" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0104" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0104" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0153" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0137" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FC0005" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FC0004" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0149" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0122" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0122" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv==3) IGNORE[total] = 1;
+                 if(SN[i]=="FA0114" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0148" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0110" && hv>2) IGNORE[total] = 1;
+                if(SN[i]=="FA0110" && hv==5) IGNORE[total] = 0;
+                if(SN[i]=="FA0124" && hv<5) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && h==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0130" && h==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0130" && hv>4) IGNORE[total] = 1;
+                
+            }//end if label runs_1367_1373
+            
+            if(label=="runs_2433_2440"){
+                
+                if(SN[i]=="FA0147") IGNORE[total] = 1;
+                if(SN[i]=="FA0111" && hv<7) IGNORE[total] = 1;//!
+                if(SN[i]=="FA0150" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0113" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0156") IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv==4) IGNORE[total] = 1;
+                //if(SN[i]=="FA0129" && hv==2) IGNORE[total] = 1;
+                if(SN[i]=="FA0129" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0116" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0116" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv<5) IGNORE[total] = 1; //!
+                if(SN[i]=="FA0112" && hv>5) IGNORE[total] = 1;
+                //if(SN[i]=="FA0112" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0139" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0104" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0153" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0137" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0137" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0146" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0146" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0119") IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0136" && hv>3) IGNORE[total] = 1;//!
+                if(SN[i]=="FA0136" && hv==6) IGNORE[total] = 0;//!
+                if(SN[i]=="FA0106") IGNORE[total] = 1;
+                if(SN[i]=="FC0005" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FC0004" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0155" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0149" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0122" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0148" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0148" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0110" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0124" && hv<7) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && hv>4) IGNORE[total] = 1;
+                //if(SN[i]=="FA0132" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0130" && hv>6) IGNORE[total] = 1;
+                
+            }//end if label 2433_2440
+            
+            
+            if(label=="runs_1891_1898"){
+                
+                if(SN[i]=="FA0147") IGNORE[total] = 1;
+                if(SN[i]=="FA0147" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0111" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0111" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0150" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0113" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0156") IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv>4) IGNORE[total] = 1;
+                //if(SN[i]=="FA0133" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0129" && hv>5) IGNORE[total] = 1;//!
+                if(SN[i]=="FA0116" && hv<6) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv<5) IGNORE[total] = 1;
+                if(SN[i]=="FA0112" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0112" && hv==4) IGNORE[total] = 1;//!
+                if(SN[i]=="FA0157" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0139" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0139" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0104" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0104" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0153" && hv>6) IGNORE[total] = 1; //!
+                if(SN[i]=="FA0151" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0137" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0137" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==6) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==8) IGNORE[total] = 1; //?
+                if(SN[i]=="FA0146" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0119") IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0136" && hv>5) IGNORE[total] = 1;//
+                if(SN[i]=="FA0106") IGNORE[total] = 1;
+                if(SN[i]=="FC0005" && hv==1) IGNORE[total] = 1; //!
+                if(SN[i]=="FC0005" && hv==4) IGNORE[total] = 1; //!
+                if(SN[i]=="FC0005" && hv==3) IGNORE[total] = 1; //!
+                if(SN[i]=="FC0005" && hv>6) IGNORE[total] = 1; //!
+                if(SN[i]=="FC0004" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0155" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0149" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0122" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv>4) IGNORE[total] = 1;//!
+                if(SN[i]=="FA0148" && hv==1) IGNORE[total] = 1;//!
+                if(SN[i]=="FA0148" && hv>4) IGNORE[total] = 1;
+               // if(SN[i]=="FA0148" && hv==6) IGNORE[total] = 0;
+                if(SN[i]=="FA0135" && hv<5) IGNORE[total] = 1;//!
+                if(SN[i]=="FA0110" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0124" && hv<6) IGNORE[total] = 1;//!
+                if(SN[i]=="FA0132" && hv>4) IGNORE[total] = 1;
+                //if(SN[i]=="FA0132" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0130" && hv>4) IGNORE[total] = 1;
+                
+            }//end if label 1891_1898
+            
+            if(label=="runs_1901_1908"){
+                if(SN[i]=="FA0111" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0111" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0150" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0150" && hv==2) IGNORE[total] = 1;
+                if(SN[i]=="FA0113" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0113" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0129" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0133" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0116" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0116" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0105" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0112" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0151" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv==2) IGNORE[total] = 1;
+                if(SN[i]=="FA0157" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0139" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0104" && hv==3) IGNORE[total] = 1;
+
+                if(SN[i]=="FA0104" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv>6) IGNORE[total] = 1;
+                if(SN[i]=="FA0107" && hv==1) IGNORE[total] = 1;
+                
+                if(SN[i]=="FA0153" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0153" && hv>6) IGNORE[total] = 1;
+                
+                if(SN[i]=="FA0151" && hv>5) IGNORE[total] = 1;
+               // if(SN[i]=="FA0151" && hv==3) IGNORE[total] = 1;
+               // if(SN[i]=="FA0151" && hv==4) IGNORE[total] = 0;
+                if(SN[i]=="FA0137" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==1) IGNORE[total] = 1;
+                if(SN[i]=="FA0134" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0121" && hv<4) IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv<3) IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0115" && hv==6) IGNORE[total] = 1;
+                if(SN[i]=="FA0136" && hv>3) IGNORE[total] = 1;
+                if(SN[i]=="FC0005" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0155" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0155" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FA0122" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0122" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0122" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0149" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0114" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0148" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0135" && hv<5) IGNORE[total] = 1;
+                if(SN[i]=="FA0110" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0124" && hv<6) IGNORE[total] = 1;
+                if(SN[i]=="FA0130" && hv>4) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && hv==7) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && hv==8) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && hv==3) IGNORE[total] = 1;
+                if(SN[i]=="FA0132" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0146" && hv==3) IGNORE[total] = 1;
+
+                if(SN[i]=="FA0146" && hv>5) IGNORE[total] = 1;
+                if(SN[i]=="FA0136" && hv==4) IGNORE[total] = 1;
+                if(SN[i]=="FA0136" && hv==5) IGNORE[total] = 1;
+                if(SN[i]=="FC0004" && hv>4) IGNORE[total] = 1;
+
+                if(SN[i]=="FA0147") IGNORE[total] = 1;
+                if(SN[i]=="FA0106") IGNORE[total] = 1;
+                if(SN[i]=="FA0156") IGNORE[total] = 1;
+                if(SN[i]=="FA0119") IGNORE[total] = 1;
+            }//end if label 1901_1908
             
             //############################################
             
@@ -548,7 +1459,6 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
 //            }
 
             
-            
             if(hv==1) real_hv = 1400;
             else if(hv==2) real_hv = 1450;
             else if(hv==3) real_hv = 1500;
@@ -557,6 +1467,16 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
             else if(hv==6) real_hv = 1650;
             else if(hv==7) real_hv = 1700;
             else if(hv==8) real_hv = 1750;
+            
+            if(label=="runs_1367_1373"){
+            if(hv==1) real_hv = 1450;
+            else if(hv==2) real_hv = 1500;
+            else if(hv==3) real_hv = 1550;
+            else if(hv==4) real_hv = 1600;
+            else if(hv==5) real_hv = 1650;
+            else if(hv==6) real_hv = 1700;
+            else if(hv==7) real_hv = 1750;
+            }
 
             //TOP FIBERS:
 
@@ -568,7 +1488,9 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
             else if(hv==5) real_hv = 19.5;
             */
             
-          //  cout<<i<<" "<<SN[i]<<" "<<real_hv<<" "<<ADC[i]<<" "<<LED[i]<<endl;
+            //cout<<i<<" "<<SN[i]<<" "<<real_hv<<" "<<ADC[i]<<" "<<LED[i]<<endl;
+            
+            
             
             if(nhvs==1){
                 string nameee = Form("%s, ADC ch #%i, LED #%i",SN[i].c_str(),ADC[i],LED[i]);
@@ -619,7 +1541,7 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
             double gain = G1[total];
             
             if(IGNORE[total]==0){
-                Double_t xl1=.6, yl1=0.8, xl2=xl1+.2, yl2=yl1+.07;
+                Double_t xl1=.3, yl1=0.8, xl2=xl1+.2, yl2=yl1+.07;
                 TPaveText *pt = new TPaveText(xl1,yl1,xl2,yl2,"NDC");
                 pt->SetTextFont(42);
                 pt->SetTextSize(0.05);
@@ -675,7 +1597,7 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
     TFile *data5 = new TFile(Form("%s/FIT/HV_05_fits.root",label.c_str()),"READ");
     TFile *data6 = new TFile(Form("%s/FIT/HV_06_fits.root",label.c_str()),"READ");
     TFile *data7 = new TFile(Form("%s/FIT/HV_07_fits.root",label.c_str()),"READ");
-    TFile *data8 = new TFile(Form("%s/FIT/HV_08_fits.root",label.c_str()),"READ");  
+    TFile *data8 = new TFile(Form("%s/FIT/HV_08_fits.root",label.c_str()),"READ");
 
     
     //--------------------------------------------
@@ -749,6 +1671,30 @@ void fit_2gaussians(string label, string pmt_info_file, const int nhvs){
                 TH1D* hist = (TH1D*)data8->Get(index.c_str());
                 real_hv = 1750;}
             
+            
+//            if(label == "runs_1367_1373"){
+//                if(this_hv==1){
+//                    TH1D* hist = (TH1D*)data1->Get(index.c_str());
+//                    real_hv = 1450;}
+//                else if(this_hv==2){
+//                    TH1D* hist = (TH1D*)data2->Get(index.c_str());
+//                    real_hv = 1500;}
+//                else if(this_hv==3){
+//                    TH1D* hist = (TH1D*)data3->Get(index.c_str());
+//                    real_hv = 1550;}
+//                else if(this_hv==4){
+//                    TH1D* hist = (TH1D*)data4->Get(index.c_str());
+//                    real_hv = 1600;}
+//                else if(this_hv==5){
+//                    TH1D* hist = (TH1D*)data5->Get(index.c_str());
+//                    real_hv = 1650;}
+//                else if(this_hv==6){
+//                    TH1D* hist = (TH1D*)data6->Get(index.c_str());
+//                    real_hv = 1700;}
+//                else if(this_hv==7){
+//                    TH1D* hist = (TH1D*)data7->Get(index.c_str());
+//                    real_hv = 1750;}
+//            }
 
             //TH1D* hist = (TH1D*)data->Get(index.c_str());
             

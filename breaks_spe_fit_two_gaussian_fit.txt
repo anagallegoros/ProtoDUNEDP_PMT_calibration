@@ -1,0 +1,16 @@
+                //*******************
+                // PARTICULAR CASES:
+                //*******************
+                if(label == "runs_510_533"){
+                    
+                    if(SN[i]=="FA0147" || SN[i]=="FA0111" || SN[i]=="FA0136"){
+                        if(hv==1){
+                            break;
+                        }
+                    }
+                    
+                    if(SN[i]=="FC0005" && hv==4) break;
+                    
+                    if(SN[i]=="FA0135" && hv==3) break;
+                    
+                }//end if label 2

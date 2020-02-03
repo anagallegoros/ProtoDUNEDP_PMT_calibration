@@ -1,0 +1,471 @@
+                //*******************
+                // PARTICULAR CASES:
+                //*******************
+
+		if(label == "runs_510_533"){
+                    
+                    if(SN[i]=="FA0147" && hv==1){
+                        x1spe = 15e6;
+                        x2spe = 35e6;
+                    }
+                    if(SN[i]=="FA0111" && hv==1){
+                        x1spe = 15e6;
+                        x2spe = 30e6;
+                    }
+                    if(SN[i]=="FA0136" && hv==1){
+                        x1spe = 10e6;
+                        x2spe = 20e6;
+                    }
+                    if(SN[i]=="FC0005" && hv==4){
+                        x1spe = 200e6;
+                        x2spe = 600e6;
+                    }
+                    if(SN[i]=="FA0135" && hv==3){
+                        x1spe = 30e6;
+                        x2spe = 140e6;
+                    }
+                }//end if label
+                
+                if(label == "runs_862_897"){
+                    
+                    if(SN[i]=="FA0112" && hv==4){
+                        x1spe = 5e6;
+                        x2spe = 20e6;
+                    }
+                    if(SN[i]=="FA0104" && hv==4){
+                        x1spe = 10e6;
+                        x2spe = 25e6;
+                    }
+                    if(SN[i]=="FA0148" && hv==4){
+                        x1spe = 8e6;
+                        x2spe = 22e6;
+                    }
+                    if(SN[i]=="FA0139" && hv==5){
+                        x1spe = 10e6;
+                        x2spe = 30e6;
+                    }
+                    if(SN[i]=="FA0129" && hv==6){
+                        x1spe = 40e6;
+                        x2spe = 100e6;
+                    }
+                }//end if label
+                
+                if(label == "runs_950_956"){
+                    
+                    if(SN[i]=="FA0150"){
+                        if(hv==4){
+                            x1spe = 80e6;
+                            x2spe = 220e6;
+                        }
+                        if(hv==5){
+                            x1spe = 150e6;
+                            x2spe = 300e6;
+                        }
+                        if(hv==6){
+                            x1spe = 200e6;
+                            x2spe = 400e6;
+                        }
+                        if(hv==7){
+                            x1spe = 200e6;
+                            x2spe = 700e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0153"){
+                        if(hv==4){
+                            x1spe = 150e6;
+                            x2spe = 350e6;
+                        }
+                        if(hv==5){
+                            x1spe = 200e6;
+                            x2spe = 500e6;
+                        }
+                        if(hv==6){
+                            x1spe = 200e6;
+                            x2spe = 700e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0146"){
+                        if(hv==4){
+                            x1spe = 100e6;
+                            x2spe = 300e6;
+                        }
+                        if(hv==5){
+                            x1spe = 100e6;
+                            x2spe = 400e6;
+                        }
+                        if(hv==6){
+                            x1spe = 200e6;
+                            x2spe = 550e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0135"){
+                        if(hv==1){
+                            x1spe = 90e6;
+                            x2spe = 250e6;
+                        }
+                        if(hv==4){
+                            x1spe = 10e6;
+                            x2spe = 60e6;
+                        }
+                        if(hv==5){
+                            //x1spe = 200e6;
+                            x2spe = 70e6;
+                        }
+                        
+                    }
+                    
+                    if(hv==7){
+                        if(SN[i]=="FA0124"){
+                            x1spe = 15e6;
+                            x2spe = 30e6;
+                        }
+                        if(SN[i]=="FC0005"){
+                            x1spe = 400e6;
+                            x2spe = 1200e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0110"){
+                        if(hv==3){
+                            x1spe = 100e6;
+                            x2spe = 350e6;
+                        }
+                        if(hv==4){
+                            x1spe = 150e6;
+                            x2spe = 450e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0132"){
+                        if(hv==3){
+                            x1spe = 50e6;
+                            x2spe = 150e6;
+                        }
+                        if(hv==4){
+                            x1spe = 80e6;
+                            x2spe = 210e6;
+                        }
+                    }
+
+                }//end if label
+                
+                if(label == "runs_1006_1013"){
+                 
+                    if(hv==6){
+                        if(SN[i]=="FA0124"){
+                            x1spe = 10e6;
+                            x2spe = 30e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0147"){
+                        if(hv==4){
+                            x1spe = 90e6;
+                            x2spe = 200e6;
+                        }
+                        if(hv==5){
+                            x1spe = 100e6;
+                            x2spe = 250e6;
+                        }
+                        if(hv==6){
+                            x1spe = 150e6;
+                            x2spe = 350e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0113"){
+                        if(hv==4){
+                            x1spe = 100e6;
+                            x2spe = 400e6;
+                        }
+                        if(hv==5){
+                            x1spe = 200e6;
+                            x2spe = 500e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0156"){
+                        if(hv==7){
+                            x1spe = 150e6;
+                            x2spe = 300e6;
+                        }
+                    }
+                    
+                    
+                    if(SN[i]=="FA0129"){
+                        if(hv==1){
+                            x1spe = 10e6;
+                            x2spe = 70e6;
+                        }
+                        if(hv==2){
+                            x1spe = 30e6;
+                            x2spe = 90e6;
+                        }
+                        if(hv==4){
+                            x1spe = 50e6;
+                            x2spe = 200e6;
+                        }
+                        if(hv==5){
+                            x1spe = 100e6;
+                            x2spe = 210e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0105"){
+                        if(hv==7){
+                            x2spe = 110e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0112"){
+                        if(hv==4){
+                            x1spe = 50e6;
+                            x2spe = 120e6;
+                        }
+                        if(hv==5){
+                            x1spe = 50e6;
+                            x2spe = 150e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0157" && hv==7){
+                        x1spe = 50e6;
+                        x2spe = 220e6;
+                    }
+                    
+                    if(SN[i]=="FA0139" && hv==7){
+                        x1spe = 100e6;
+                        x2spe = 400e6;
+                    }
+                    
+                    if(SN[i]=="FA0104" && hv==7){
+                        x1spe = 100e6;
+                        x2spe = 400e6;
+                    }
+                    
+                    if(SN[i]=="FA0153"){
+                        if(hv==4){
+                            x1spe = 100e6;
+                            x2spe = 300e6;
+                        }
+                        if(hv==5){
+                            x1spe = 200e6;
+                            x2spe = 500e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0151"){
+                        if(hv==4){
+                            x1spe = 100e6;
+                            x2spe = 250e6;
+                        }
+                        if(hv==5){
+                            x1spe = 100e6;
+                            x2spe = 300e6;
+                        }
+                    }
+                    if(SN[i]=="FC0005"){
+                        if(hv==4){
+                            x1spe = 200e6;
+                            x2spe = 700e6;
+                        }
+                    }
+                    if(SN[i]=="FC0004"){
+                        if(hv==4){
+                            x1spe = 40e6;
+                            x2spe = 100e6;
+                        }
+                        if(hv==6){
+                            x1spe = 80e6;
+                            x2spe = 200e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0135" && hv==8){
+                        x2spe = 130e6;
+                    }
+                    if(SN[i]=="FA0132" && hv==4){
+                        x2spe = 210e6;
+                    }
+                    if(SN[i]=="FA0130" && hv==4){
+                        x2spe = 200e6;
+                    }
+                    
+                    
+              
+                    
+                }//end if label
+                
+                
+                if(label == "runs_1284_1291"){
+
+                    
+                    if(hv==4){
+                        if(SN[i]=="FA0112"){
+                            x1spe = 30e6;
+                            x2spe = 140e6;
+                        }
+                    }
+                    
+                    if(hv==8){
+                        if(SN[i]=="FA0134"){
+                            x1spe = 100e6;
+                            x2spe = 350e6;
+                        }
+                    }
+                    
+                    if(hv==5){
+                        if(SN[i]=="FC0005"){
+                            x1spe = 200e6;
+                            x2spe = 800e6;
+                        }
+                    }
+                    
+                    
+                    if(hv==5){
+                        if(SN[i]=="FA0110"){
+                            x1spe = 200e6;
+                            x2spe = 600e6;
+                        }
+                    }
+                    
+                }//end if label
+                
+                
+                
+                if(label == "runs_1779_1786"){
+                    
+                    if(SN[i]=="FA0113"){
+                        if(hv==5){
+                            x1spe = 200e6;
+                            x2spe = 650e6;
+                        }
+                        if(hv==6){
+                            x1spe = 300e6;
+                            x2spe = 800e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0133"){
+ 
+                        if(hv==4){
+                            x1spe = 100e6;
+                            x2spe = 250e6;
+                        }
+                        if(hv==5){
+                            x1spe = 100e6;
+                            x2spe = 380e6;
+                        }
+//                        if(hv==6){
+//                            x1spe = 200e6;
+//                            x2spe = 500e6;
+//                        }
+//                        if(hv==7){
+//                            x1spe = 300e6;
+//                            x2spe = 600e6;
+//                        }
+//
+//                        if(hv==8){
+//                            x1spe = 300e6;
+//                            x2spe = 600e6;
+//                        }
+                    }
+
+                    if(SN[i]=="FA0105"){
+                        if(hv==7){
+                            x1spe = 10e6;
+                            x2spe = 140e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FC0005"){
+                        if(hv==2){
+                            x1spe = 70e6;
+                            x2spe = 210e6;
+                        }
+                        if(hv==3){
+                            x1spe = 70e6;
+                            x2spe = 300e6;
+                        }
+                        if(hv==4){
+                            x1spe = 200e6;
+                            x2spe = 400e6;
+                        }
+                        if(hv==5){
+                            x1spe = 200e6;
+                            x2spe = 500e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0122"){
+                        if(hv==4){
+                            x1spe = 70e6;
+                            x2spe = 200e6;
+                        }
+                        if(hv==5){
+                            x1spe = 100e6;
+                            x2spe = 250e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0130"){
+                        if(hv==5){
+                            x1spe = 100e6;
+                            x2spe = 350e6;
+                        }
+                        if(hv==6){
+                            x1spe = 150e6;
+                            x2spe = 500e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0114"){
+                        if(hv==1){
+                            x1spe = 50e6;
+                            x2spe = 130e6;
+                        }
+                        if(hv==2){
+                            x1spe = 80e6;
+                            x2spe = 200e6;
+                        }
+                        if(hv==3){
+                            x1spe = 100e6;
+                            x2spe = 290e6;
+                        }
+                        if(hv==4){
+                            x1spe = 110e6;
+                            x2spe = 300e6;
+                        }
+                        if(hv==5){
+                            x1spe = 100e6;
+                            x2spe = 350e6;
+                        }
+                    }
+                    
+                    if(SN[i]=="FA0110"){
+                        if(hv==1){
+                            x1spe = 40e6;
+                            x2spe = 140e6;
+                        }
+                        if(hv==2){
+                            x1spe = 70e6;
+                            x2spe = 210e6;
+                        }
+                        if(hv==3){
+                            x1spe = 100e6;
+                            x2spe = 240e6;
+                        }
+                        if(hv==4){
+                            x1spe = 100e6;
+                            x2spe = 240e6;
+                        }
+                        if(hv==5){
+                            x1spe = 120e6;
+                            x2spe = 250e6;
+                        }
+                    }
+
+                }//end if label 1779
